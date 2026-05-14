@@ -76,6 +76,7 @@
 - Directory structure, go.mod, configuration framework
 - docker-compose for local development
 - GitHub Actions CI/CD template
+- **Minimal structured logger** (`src/logging/logger.go`): JSON output, request ID, log level config — used by all subsequent phases
 
 ### Phase 2: MCP & Registry (Weeks 2-3)
 - MCP protocol handler
@@ -101,7 +102,7 @@
 - **Response Cache** (in-memory + Redis backend, opt-in per tool)
 
 ### Phase 6: Observability (Weeks 6-7)
-- Structured logging (JSON)
+- **Full structured logging** (extend Phase 1 bootstrap: add session ID, trace ID, latency, service context, sampling)
 - Distributed tracing (OpenTelemetry)
 - Rate limiting (token bucket)
 

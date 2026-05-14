@@ -798,7 +798,14 @@ Retry-After: 5
 
 **Responsibility:** Structured JSON logging with context for debugging and monitoring.
 
-**Log Format:**
+**Implementation Phases:**
+
+> **Phase 1 (Bootstrap):** A minimal logger is introduced in Phase 1 so that all subsequent phases (2–6) have structured visibility from day one. Without it, debugging the registry, router, adapters, and circuit breaker would rely on unstructured `fmt.Println` output.
+
+- **Phase 1 bootstrap fields:** `timestamp`, `level`, `message`, `request_id`, `component`
+- **Phase 7 full fields:** All bootstrap fields + `trace_id`, `session_id`, `service`, `tool_name`, `instance`, `latency_ms`, `error`
+
+**Log Format (full — Phase 7):**
 ```json
 {
   "timestamp": "2026-05-13T12:34:56.789Z",
@@ -809,11 +816,10 @@ Retry-After: 5
   "request_id": "req_xyz789",
   "service": "mcp-platform",
   "component": "router",
-  "tool_name": "weather_getCurrentWeather",
+  "tool_name": "weather_api_mcp::getCurrentWeather",
   "instance": "mcp_server_1:9000",
   "latency_ms": 45,
-  "error": null,
-  "custom_field": "value"
+  "error": null
 }
 ```
 

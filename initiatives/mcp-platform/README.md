@@ -132,7 +132,7 @@ External Services:
 ## Implementation Plan
 
 ### Phase 1: Project Foundation & Infrastructure Setup
-**Goal:** Establish project structure, configuration framework, and local development environment.
+**Goal:** Establish project structure, configuration framework, local development environment, and a minimal logger so every subsequent phase has structured visibility from day one.
 
 **Deliverables:**
 - Project directory layout (src, tests, docs, scripts, docker)
@@ -140,8 +140,13 @@ External Services:
 - Configuration management (.env, environment variables)
 - docker-compose.yml for local development
 - GitHub CI/CD workflow template (.github/workflows)
+- **Minimal Structured Logger** (`src/logging/logger.go`) — bootstrap version:
+  - JSON log output at DEBUG/INFO/WARN/ERROR levels
+  - Auto-attach `request_id` (UUID) and `component` fields to every log line
+  - Configurable via `LOG_LEVEL` and `LOG_FORMAT` env vars
+  - Used by all subsequent phases from Phase 2 onwards
 
-**Rationale:** Before writing any code, establish the scaffolding and build pipeline to ensure consistent, reproducible development.
+**Rationale:** Before writing any feature code, establish the scaffolding, build pipeline, and a minimal logger. Without structured logging from the start, debugging Phases 2–6 means reading raw `fmt.Println` output — the logger costs almost nothing to add early and pays dividends throughout development.
 
 ---
 
@@ -268,15 +273,14 @@ External Services:
 
 ---
 
-### Phase 7: Observability - Logging, Tracing, Rate Limiting
-**Goal:** Provide complete visibility into router operations and protect resources.
+### Phase 7: Full Observability - Tracing & Rate Limiting
+**Goal:** Add distributed tracing and rate limiting to complete the observability stack. (Structured logging was bootstrapped in Phase 1 and expanded here.)
 
 **Deliverables:**
-- **Structured Logger** (`src/logging/logger.go`):
-  - JSON-formatted logs at DEBUG/INFO/WARN/ERROR levels
-  - Include request ID, session ID, service name, latency in every log
+- **Structured Logger — Full version** (`src/logging/logger.go`):
+  - Extend the Phase 1 bootstrap logger with session ID, service name, latency, trace ID fields
   - Integration hooks for log aggregation (ELK, Datadog, etc.)
-  - Sampling for high-volume requests
+  - Sampling for high-volume requests (DEBUG: 1 per 100, errors: always)
   
 - **Distributed Tracer** (`src/tracing/tracer.go`):
   - OpenTelemetry SDK integration
