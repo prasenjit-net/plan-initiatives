@@ -74,9 +74,9 @@
 
 ### Phase 1: Project Foundation (Weeks 1-2)
 - Directory structure, go.mod, configuration framework
+- **Minimal structured logger** (`src/logging/logger.go`): JSON output, request ID, log level config — available to all subsequent phases
 - docker-compose for local development
 - GitHub Actions CI/CD template
-- **Minimal structured logger** (`src/logging/logger.go`): JSON output, request ID, log level config — used by all subsequent phases
 
 ### Phase 2: MCP & Registry (Weeks 2-3)
 - MCP protocol handler
