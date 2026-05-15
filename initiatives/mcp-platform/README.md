@@ -359,6 +359,7 @@ External Services:
   - Tracing: Spans exported to tracing backend
   
 - **Documentation**:
+  - **[docs/ENTERPRISE_CONTEXT.md](docs/ENTERPRISE_CONTEXT.md)** — Enterprise deployment context: current vs target state architecture, VFD → Apigee → MCP Gateway → SOR topology
   - **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — Component architecture, data flow diagrams, design patterns
   - **[docs/PROTOCOL.md](docs/PROTOCOL.md)** — MCP protocol details, message formats, handshake sequence
   - **[docs/API.md](docs/API.md)** — HTTP API endpoints, request/response examples, error codes
@@ -648,6 +649,7 @@ initiatives/mcp-platform/
 │       └── tracing_test.go            # Tracing export test
 │
 ├── docs/
+│   ├── ENTERPRISE_CONTEXT.md          # Current vs target enterprise deployment context
 │   ├── ARCHITECTURE.md                # Component architecture
 │   ├── PROTOCOL.md                    # MCP protocol details
 │   ├── API.md                         # HTTP API reference

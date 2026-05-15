@@ -10,6 +10,8 @@
 
 > **v1.1 Additions:** SSE Transport, Circuit Breaker, Tool Name Namespacing, Response Cache, gRPC Adapter
 
+> 📍 **Enterprise deployment context** (how this platform fits into the broader infrastructure — VFD → Apigee → MCP Gateway → SOR) is documented separately in [ENTERPRISE_CONTEXT.md](./ENTERPRISE_CONTEXT.md).
+
 ---
 
 ## System Architecture
