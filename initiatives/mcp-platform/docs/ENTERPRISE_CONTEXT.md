@@ -8,6 +8,15 @@
 
 ---
 
+## Architecture Comparison Diagram
+
+> 📊 A side-by-side SVG diagram comparing the current and target enterprise deployments is available at:
+> **[enterprise-architecture-comparison.svg](./enterprise-architecture-comparison.svg)**
+>
+> Open in any browser or SVG viewer. Suitable for management presentations.
+
+---
+
 ## Current State Architecture
 
 ### Overview
